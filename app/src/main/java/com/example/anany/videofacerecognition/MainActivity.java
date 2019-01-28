@@ -1,14 +1,21 @@
 package com.example.anany.videofacerecognition;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.AsyncTask;
+import android.provider.MediaStore;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.CollapsibleActionView;
@@ -73,13 +80,22 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Face[] faces) {
             mDialog.dismiss();
-
             facesDetected = faces;
         }
 
         @Override
         protected void onProgressUpdate(String... values) {
             mDialog.setMessage(values[0]);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0 && resultCode == RESULT_OK) {
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            imageView.setImageBitmap(bitmap);
+            detectAndFrame(bitmap);
         }
     }
 
@@ -91,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
         mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.billgates);
         imageView = findViewById(R.id.imageView);
+        Toast.makeText(getApplicationContext(), "Press the Detect Button to take a picture. Press Identify to identify the person.", Toast.LENGTH_LONG).show();
         imageView.setImageBitmap(mBitmap);
         Button btnDetect = findViewById(R.id.btnDetectFace);
         Button btnIdentify = findViewById(R.id.btnIdentify);
@@ -100,8 +117,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Bitmap icon = BitmapFactory.decodeResource(getApplicationContext().getResources(),
                         R.drawable.billgates);
-
-                detectAndFrame(icon);
+                if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 110);
+                } else {
+                    Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(cameraIntent, 0);
+                }
 
             }
         });
@@ -210,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
                         imageView.setImageBitmap(
                                 drawFaceRectanglesOnBitmap(imageBitmap, result));
                         imageBitmap.recycle();
+                        Toast.makeText(getApplicationContext(), "Now you can identify the person by pressing the \"Identify\" Button", Toast.LENGTH_LONG).show();
                         takePicture = true;
                     }
                 };
