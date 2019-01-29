@@ -80,3 +80,15 @@ Once you have created your account, head to the [Azure Portal](https://portal.az
 </p>
 
 You should now be able to see two different subscription keys that you can use. Follow the instructions in the [**"Using the API Key in the app" Section**](#using-the-api-key-in-the-app) to see how to use the API Key in the app. It only requires a change in 1 line of code.
+
+-----
+
+## Conclusion
+**This was a repository for an Android app that uses the Microsoft Face API to detect and identify faces in an image.** If you are having any issues, troubles, or problems, you can reach me at ishaanjav@gmail.com or by [making a new issue](https://github.com/ishaanjav/Face_API_-_Indentification_in_Android/issues) for this repository.
+
+One thing to keep in mind is that *in order to add people to the Person Group, you should first follow my code for [this repository](https://github.com/ishaanjav/Face_API_-_Visual_Studio).* In that repository, you will find code for Visual Studio that adds people to Person Groups given their name and images and identifies them. Thence, you can try out this Android app for identification.
+
+**Other Repositories:** If you enjoyed using and testing out this app, *and have given it a star*, then you may want to check out some of my other repositories related to facial analysis and identification.
+- [**Face API - Visual Studio**](https://github.com/ishaanjav/Face_API_-_Visual_Studio): The purpose of this repository is to provide code for a Console Application in C# that uses the Microsoft Azure Face API to add people to Person Groups and then identify people given images. [README](https://github.com/ishaanjav/Face_API_-_Visual_Studio/blob/master/README.md)** 
+- [**RECOMMENDED - Face Analyzer**](https://github.com/ishaanjav/Face_Analyzer): The purpose of this Android app is to utilize the Microsoft Face API to not only detect individual faces in an image, but also for each face provide information such as emotions, the estimated age, gender, and more. [README](https://github.com/ishaanjav/Face_Analyzer/blob/master/README.md)
+- [**RECOMMENDED - Kairos Face Recognition**](https://github.com/ishaanjav/Kairos_Face_Recognition): The purpose of this Android app is to use Kairos's SDK for Android in order to implement facial recognition. Features of this app include: registering and identifying users when given an image. [README](https://github.com/ishaanjav/Kairos_Face_Recognition/blob/master/README.md)
