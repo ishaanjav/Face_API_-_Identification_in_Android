@@ -39,7 +39,7 @@ The app is simple to use and has two buttons: a **detect** button and an **ident
 
 -----
 ## Setup
-**Please note that this app requires the use of Microsoft Azure's Face API. Without the API Key, you will not be able to use the app as it was intended. The following sections contain the full set of instructions to getting your own API key for free and using it in the app by changing a single line of code.**
+**Please note that this app requires the use of Microsoft Azure's Face API. Without the API Key, you will not be able to use the app as it was intended. [This section](#getting-the-face-api-key) contains the full set of instructions to getting your own API key for free. The [below section](#using-the-api-key-in-the-app) explains how to use it in the app by changing a single line of code.**
 ### Downloading to Android Studio
 To use the app, you can clone it from this GitHub repository as a zip file, extract the contents of the file, and open it as a project in Android Studio. Once you have done so, it can be run on your Android device.
 
