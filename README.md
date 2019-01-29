@@ -44,7 +44,23 @@ The app is simple to use and has two buttons: a **detect** button and an **ident
 To use the app, you can clone it from this GitHub repository as a zip file, extract the contents of the file, and open it as a project in Android Studio. Once you have done so, it can be run on your Android device.
 
 ### Using the API Key in the app
-Assuming that you have already gotten the API Key from the [Azure Portal](https://portal.azure.com/#home), you can continue with the following steps. If not, please read the ["Making the Azure Account" Section](#making-the-azure-account) to see instructions on creating a free account and getting the API Key.
+Assuming that you have already gotten the API Key from the [Azure Portal](https://portal.azure.com/#home), you can continue with the following steps. If not, please read the [**"Getting the Face API Key" Section**](#getting-the-face-api-key) to see instructions on creating a free account and getting the API Key.
+
+In [`MainActivity.java`](https://github.com/ishaanjav/Face_API_-_Indentification_in_Android/blob/master/app/src/main/java/com/example/anany/videofacerecognition/MainActivity.java), Line 45 looks like this:
+
+    private FaceServiceClient faceServiceClient = new FaceServiceRestClient("<YOUR API ENDPOINT HERE>", "<YOUR API KEY HERE>");
+replace `<YOUR API SUBSCRIPTION KEY>` with one of your 2 keys from the Azure Portal. *(If you haven't gotten your API Key yet, read the following [two sections below](#getting-the-face-api-key))*. `<YOUR ENDPOINT HERE>` should be replaced with one of the following examples from [this API Documentation link](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236). The format should be similar to: 
+  
+    "https://<LOCATION>/face/v1.0"
+  
+where `<LOCATION>` should be replaced with something like `uksouth.api.cognitive.microsoft.com` or `japaneast.api.cognitive.microsoft.com`. All of these can be found, listed at [this link](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).  
+
+### If you have followed all these steps, the app should now be ready for you to use! Check out the [Conclusion Section](#conclusion) for extra info.
+
+
+
+-----
+## Getting the Face API Key
 
 ### Making the Azure Account
 In order to run the face dectection and identification , you must get an API Subscription Key from the Azure Portal. [This page](https://azure.microsoft.com/en-us/services/cognitive-services/face/) by Microsoft provides the features and capabilities of the Face API. **You can create a free Azure account that doesn't expire at [this link here](https://azure.microsoft.com/en-us/try/cognitive-services/?api=face-api) by clicking on the "Get API Key" button and choosing the option to create a free Azure account**. 
@@ -63,4 +79,4 @@ Once you have created your account, head to the [Azure Portal](https://portal.az
   <td>Hi</td>
 </p>
 
-You should now be able to see two different subscription keys that you can use. Follow the instructions in the ["Using the API Key in the app" Section](#using-the-api-key-in-the-app) to see how to use the API Key in the app. It only requires a change in 1 line of code.
+You should now be able to see two different subscription keys that you can use. Follow the instructions in the [**"Using the API Key in the app" Section**](#using-the-api-key-in-the-app) to see how to use the API Key in the app. It only requires a change in 1 line of code.
